@@ -1,75 +1,30 @@
-# Nuxt Minimal Starter
+# Wheatley's Accident Repair Centre
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Modern Nuxt rebuild of [wheatleys-accident-repair-centre.co.uk](https://wheatleys-accident-repair-centre.co.uk) with the same copy and a cleaner UI/UX.
+
+## Stack
+
+- Nuxt 4
+- Supabase (`jbapp` / UKpubs project) for content, inquiries, and media
+- Storage bucket: `WheatleysACR`
+- Tables prefixed with `wheatleys_`
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+cp .env.example .env   # keys already match the UKpubs Supabase project
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## Scripts
 
-Build the application for production:
+- `npm run dev` — local development
+- `npm run build` — production build
+- `npm run preview` — preview production build
 
-```bash
-# npm
-npm run build
+## Supabase assets
 
-# pnpm
-pnpm build
+Public media URL pattern:
 
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+`https://isprmebbahzjnrekkvxv.supabase.co/storage/v1/object/public/WheatleysACR/<filename>`
