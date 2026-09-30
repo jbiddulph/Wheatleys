@@ -45,8 +45,14 @@ async function submit() {
     }
     await navigateTo((route.query.redirect as string) || '/admin')
   } catch (err: unknown) {
-    errorMsg.value =
+    const message =
       err instanceof Error ? err.message : 'Unable to sign in. Please try again.'
+    if (/invalid login credentials/i.test(message)) {
+      errorMsg.value =
+        'Invalid email or password. Use the password stored on wheatleys_users.password_hash (the value inside crypt(...) in your SQL), not your Supabase dashboard password.'
+    } else {
+      errorMsg.value = message
+    }
   } finally {
     loading.value = false
   }

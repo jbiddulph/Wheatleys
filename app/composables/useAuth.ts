@@ -42,7 +42,7 @@ export function useAuth() {
    * Supabase session so existing admin RLS continues to work.
    */
   async function signIn(email: string, password: string) {
-    const trimmed = email.trim()
+    const trimmed = email.trim().toLowerCase()
     const { data: rows, error: loginError } = await supabase.rpc(
       'wheatleys_admin_login',
       {
@@ -66,7 +66,7 @@ export function useAuth() {
     }
 
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: trimmed,
+      email: row.email || trimmed,
       password,
     })
     if (error) throw error
