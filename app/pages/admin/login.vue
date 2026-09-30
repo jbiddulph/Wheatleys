@@ -69,7 +69,7 @@ async function submit() {
       <form class="login-card reveal" @submit.prevent="submit">
         <p class="section-label">Staff access</p>
         <h2>Sign in</h2>
-        <p class="lede">Use your Wheatley’s admin email and password.</p>
+        <p class="lede">Sign in with your Wheatley’s admin email and password.</p>
 
         <p v-if="errorMsg" class="error" role="alert">{{ errorMsg }}</p>
 
