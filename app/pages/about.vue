@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { business } from '~/utils/site'
 
-const { storageUrl } = useStorageUrl()
-
 useSeoMeta({
   title: "About us | Wheatley's Accident Repair Centre",
 })
@@ -18,18 +16,7 @@ const whyUs = [
 
 <template>
   <div>
-    <section class="page-hero">
-      <img
-        :src="storageUrl('instagram_workshop_3.jpg')"
-        alt=""
-        class="page-hero-image"
-      />
-      <div class="page-hero-scrim" />
-      <div class="page-shell page-hero-content">
-        <p class="brand-line">Wheatley’s</p>
-        <h1>About us</h1>
-      </div>
-    </section>
+    <PageHero title="About us" image="instagram_workshop_3.jpg" />
 
     <section class="section page-shell about-grid">
       <div>
@@ -77,48 +64,6 @@ const whyUs = [
 </template>
 
 <style scoped>
-.page-hero {
-  position: relative;
-  min-height: 42vh;
-  display: grid;
-  align-items: end;
-  overflow: hidden;
-}
-
-.page-hero-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.page-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 12, 14, 0.25), rgba(10, 12, 14, 0.9));
-}
-
-.page-hero-content {
-  position: relative;
-  z-index: 1;
-  padding: 5rem 0 2.5rem;
-}
-
-.brand-line {
-  font-family: var(--font-display);
-  color: var(--amber-bright);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 0.95;
-}
-
-.page-hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-top: 0.35rem;
-}
-
 .about-grid {
   display: grid;
   gap: 2rem;

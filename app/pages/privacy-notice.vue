@@ -31,11 +31,12 @@ useSeoMeta({ title: "Privacy notice | Wheatley's Accident Repair Centre" })
       marketing purposes.
     </p>
     <p>
-      Forms are sent via email and their content is encrypted in transit.
+      Forms are encrypted in transit. Contact and quote requests submitted through
+      this website are stored securely so we can respond to your enquiry.
     </p>
     <p>
-      No personal data from these forms is stored in the website database unless
-      otherwise stated here.
+      Quote photo uploads are stored only for the purpose of preparing your
+      estimate and are not used for marketing.
     </p>
 
     <h3>Cookies</h3>

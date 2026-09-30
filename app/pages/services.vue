@@ -17,22 +17,19 @@ const insurers = [
   'Insurance-Logo-LV.png',
   'Insurance-Logo-saga.png',
 ]
+
+function paragraphs(body?: string | null) {
+  return (body || '')
+    .replace(/\\n/g, '\n')
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+}
 </script>
 
 <template>
   <div>
-    <section class="page-hero">
-      <img
-        :src="storageUrl('W-ARC-Services-SPRAY.png')"
-        alt=""
-        class="page-hero-image"
-      />
-      <div class="page-hero-scrim" />
-      <div class="page-shell page-hero-content">
-        <p class="brand-line">Wheatley’s</p>
-        <h1>Services</h1>
-      </div>
-    </section>
+    <PageHero title="Services" image="W-ARC-Services-SPRAY.png" />
 
     <section class="section page-shell">
       <p class="lead">
@@ -55,7 +52,7 @@ const insurers = [
           <div>
             <h2>{{ service.title }}</h2>
             <p
-              v-for="(para, idx) in (service.body || '').split('\n\n')"
+              v-for="(para, idx) in paragraphs(service.body)"
               :key="idx"
             >
               {{ para }}
@@ -88,48 +85,6 @@ const insurers = [
 </template>
 
 <style scoped>
-.page-hero {
-  position: relative;
-  min-height: 42vh;
-  display: grid;
-  align-items: end;
-  overflow: hidden;
-}
-
-.page-hero-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.page-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 12, 14, 0.35), rgba(10, 12, 14, 0.92));
-}
-
-.page-hero-content {
-  position: relative;
-  z-index: 1;
-  padding: 5rem 0 2.5rem;
-}
-
-.brand-line {
-  font-family: var(--font-display);
-  color: var(--amber-bright);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 0.95;
-}
-
-.page-hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-top: 0.35rem;
-}
-
 .lead {
   font-size: 1.15rem;
   color: var(--fog);

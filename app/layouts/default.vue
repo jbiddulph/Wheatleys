@@ -1,10 +1,12 @@
 <template>
   <div class="layout">
+    <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <SiteFooter />
+    <MobileCallBar />
   </div>
 </template>
 
@@ -17,5 +19,12 @@
 
 main {
   flex: 1;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 900px) {
+  main {
+    padding-bottom: 0;
+  }
 }
 </style>

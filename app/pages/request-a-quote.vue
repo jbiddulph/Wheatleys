@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { damagedAreaOptions, damageTypeOptions } from '~/utils/site'
 
-const { storageUrl } = useStorageUrl()
 const supabase = useSupabase()
 const config = useRuntimeConfig()
 
@@ -97,18 +96,7 @@ async function submit() {
 
 <template>
   <div>
-    <section class="page-hero">
-      <img
-        :src="storageUrl('instagram_workshop_4.jpg')"
-        alt=""
-        class="page-hero-image"
-      />
-      <div class="page-hero-scrim" />
-      <div class="page-shell page-hero-content">
-        <p class="brand-line">Wheatley’s</p>
-        <h1>Request a quote</h1>
-      </div>
-    </section>
+    <PageHero title="Request a quote" image="instagram_workshop_4.jpg" />
 
     <section class="section page-shell">
       <p class="lead">
@@ -185,6 +173,12 @@ async function submit() {
             Max. number: 5 files.
           </span>
         </label>
+        <ul v-if="files.length" class="file-list">
+          <li v-for="file in files" :key="file.name + file.size">
+            {{ file.name }}
+            <span>({{ Math.round(file.size / 1024) }} KB)</span>
+          </li>
+        </ul>
 
         <label class="check consent">
           <input v-model="form.consent" type="checkbox" />
@@ -212,48 +206,6 @@ async function submit() {
 </template>
 
 <style scoped>
-.page-hero {
-  position: relative;
-  min-height: 38vh;
-  display: grid;
-  align-items: end;
-  overflow: hidden;
-}
-
-.page-hero-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.page-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 12, 14, 0.35), rgba(10, 12, 14, 0.92));
-}
-
-.page-hero-content {
-  position: relative;
-  z-index: 1;
-  padding: 5rem 0 2.5rem;
-}
-
-.brand-line {
-  font-family: var(--font-display);
-  color: var(--amber-bright);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 0.95;
-}
-
-.page-hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-top: 0.35rem;
-}
-
 .lead {
   font-size: 1.1rem;
   color: var(--mist);
@@ -324,6 +276,24 @@ textarea {
 .hint {
   font-size: 0.82rem;
   color: var(--fog);
+}
+
+.file-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  gap: 0.4rem;
+  color: var(--mist);
+  font-size: 0.9rem;
+}
+
+.file-list span {
+  color: var(--fog);
+  margin-left: 0.35rem;
 }
 
 .error { color: var(--danger); }
