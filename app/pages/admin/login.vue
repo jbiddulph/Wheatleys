@@ -10,54 +10,30 @@ useSeoMeta({
 
 const route = useRoute()
 const { storageUrl } = useStorageUrl()
-const {
-  signIn,
-  signInWithGoogle,
-  requestPasswordReset,
-  signOut,
-  isAuthenticated,
-  refresh,
-  ready,
-} = useAuth()
+const { signIn, signOut, isAuthenticated, refresh, ready } = useAuth()
 const { requireAdmin, refreshAdmin } = useAdminAuth()
 
 const email = ref('')
 const password = ref('')
 const loading = ref(false)
-const resetLoading = ref(false)
 const errorMsg = ref('')
-const infoMsg = ref('')
 
 if (route.query.error === 'not-admin') {
   errorMsg.value = 'Your account is signed in but is not an admin.'
 }
 
-async function goAdminIfAllowed() {
-  const ok = await requireAdmin()
-  if (ok) {
-    await navigateTo((route.query.redirect as string) || '/admin')
-    return true
-  }
-  return false
-}
-
 onMounted(async () => {
-  // OAuth / magic-link returns with tokens in the URL hash.
   if (!ready.value) await refresh()
-  await new Promise((r) => setTimeout(r, 200))
-  if (!ready.value) await refresh()
-
   if (isAuthenticated.value) {
-    const ok = await goAdminIfAllowed()
-    if (!ok && route.query.error !== 'not-admin') {
-      errorMsg.value = 'Your account is signed in but is not an admin.'
+    const ok = await requireAdmin()
+    if (ok) {
+      await navigateTo((route.query.redirect as string) || '/admin')
     }
   }
 })
 
 async function submit() {
   errorMsg.value = ''
-  infoMsg.value = ''
   loading.value = true
   try {
     await signIn(email.value.trim(), password.value)
@@ -69,51 +45,9 @@ async function submit() {
     }
     await navigateTo((route.query.redirect as string) || '/admin')
   } catch (err: unknown) {
-    const message =
+    errorMsg.value =
       err instanceof Error ? err.message : 'Unable to sign in. Please try again.'
-    if (/invalid login credentials/i.test(message)) {
-      errorMsg.value =
-        'Invalid login credentials. If you usually sign in with Google, use that button below — or reset your password.'
-    } else {
-      errorMsg.value = message
-    }
   } finally {
-    loading.value = false
-  }
-}
-
-async function sendReset() {
-  errorMsg.value = ''
-  infoMsg.value = ''
-  const address = email.value.trim()
-  if (!address) {
-    errorMsg.value = 'Enter your email first, then click Forgot password.'
-    return
-  }
-  resetLoading.value = true
-  try {
-    const redirectTo = `${window.location.origin}/admin/reset-password`
-    await requestPasswordReset(address, redirectTo)
-    infoMsg.value =
-      'Password reset email sent. Check your inbox (and spam) for the link.'
-  } catch (err: unknown) {
-    errorMsg.value =
-      err instanceof Error ? err.message : 'Could not send reset email.'
-  } finally {
-    resetLoading.value = false
-  }
-}
-
-async function googleSignIn() {
-  errorMsg.value = ''
-  infoMsg.value = ''
-  loading.value = true
-  try {
-    const redirectTo = `${window.location.origin}/admin/login`
-    await signInWithGoogle(redirectTo)
-  } catch (err: unknown) {
-    errorMsg.value =
-      err instanceof Error ? err.message : 'Google sign-in failed.'
     loading.value = false
   }
 }
@@ -135,10 +69,9 @@ async function googleSignIn() {
       <form class="login-card reveal" @submit.prevent="submit">
         <p class="section-label">Staff access</p>
         <h2>Sign in</h2>
-        <p class="lede">Use your Wheatley’s admin email and password.</p>
+        <p class="lede">Sign in with your Wheatley’s admin email and password.</p>
 
         <p v-if="errorMsg" class="error" role="alert">{{ errorMsg }}</p>
-        <p v-if="infoMsg" class="info" role="status">{{ infoMsg }}</p>
 
         <label>
           Email
@@ -148,7 +81,7 @@ async function googleSignIn() {
             name="email"
             autocomplete="username"
             required
-            :disabled="loading || resetLoading"
+            :disabled="loading"
           />
         </label>
 
@@ -160,30 +93,12 @@ async function googleSignIn() {
             name="password"
             autocomplete="current-password"
             required
-            :disabled="loading || resetLoading"
+            :disabled="loading"
           />
         </label>
 
-        <button class="btn btn-primary" type="submit" :disabled="loading || resetLoading">
+        <button class="btn btn-primary" type="submit" :disabled="loading">
           {{ loading ? 'Signing in…' : 'Sign in' }}
-        </button>
-
-        <button
-          class="btn btn-ghost"
-          type="button"
-          :disabled="loading || resetLoading"
-          @click="googleSignIn"
-        >
-          Continue with Google
-        </button>
-
-        <button
-          class="text-btn"
-          type="button"
-          :disabled="loading || resetLoading"
-          @click="sendReset"
-        >
-          {{ resetLoading ? 'Sending reset email…' : 'Forgot password?' }}
         </button>
 
         <NuxtLink to="/" class="back-link">← Back to website</NuxtLink>
@@ -300,43 +215,18 @@ input:disabled {
   opacity: 0.65;
 }
 
-.error,
-.info {
+.error {
   margin: 0;
   padding: 0.75rem 0.9rem;
   border-radius: 12px;
-  font-size: 0.92rem;
-}
-
-.error {
   background: #fdecec;
   color: #9b2f2f;
-}
-
-.info {
-  background: #e8f6ec;
-  color: #256b3b;
+  font-size: 0.92rem;
 }
 
 .btn {
-  margin-top: 0.15rem;
+  margin-top: 0.35rem;
   width: 100%;
-}
-
-.text-btn {
-  border: 0;
-  background: transparent;
-  color: var(--copper-deep);
-  font: inherit;
-  font-weight: 700;
-  font-size: 0.92rem;
-  cursor: pointer;
-  padding: 0.25rem;
-}
-
-.text-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .back-link {

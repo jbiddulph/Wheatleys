@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware(async (to) => {
   if (import.meta.server) return
 
-  if (to.path === '/admin/login' || to.path === '/admin/reset-password') return
+  if (to.path === '/admin/login') return
 
   const { isAuthenticated, ready, loading, refresh } = useAuth()
   const { requireAdmin } = useAdminAuth()

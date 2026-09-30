@@ -31,42 +31,68 @@ Production (Vercel): https://wheatleys.vercel.app
 
 Staff login: https://wheatleys.vercel.app/admin/login
 
-**Important:** logging into the Supabase Dashboard is separate from logging into the Wheatleys app. The app uses **Authentication → Users** in the UKpubs project (`isprmebbahzjnrekkvxv`), not your dashboard password.
+Sign-in is a normal email + password check against `wheatleys_users` (admin role + `password_hash`).
 
-### One-time setup
+### One-time SQL setup
 
-1. Confirm your Auth user exists (Authentication → Users). Email `john.mbiddulph@gmail.com` already does.
-2. Promote that user to admin in the SQL Editor:
+Run this in the UKpubs Supabase SQL Editor:
 
 ```sql
-insert into public.wheatleys_users (id, email, full_name, role)
-select id, email, 'John Biddulph', 'admin'
+alter table public.wheatleys_users
+  add column if not exists password_hash text;
+
+create or replace function public.wheatleys_admin_login(p_email text, p_password text)
+returns table (id uuid, email text, full_name text, role text)
+language plpgsql
+security definer
+set search_path = public, auth, extensions
+as $$
+declare
+  matched public.wheatleys_users%rowtype;
+begin
+  select *
+  into matched
+  from public.wheatleys_users u
+  where lower(u.email) = lower(trim(p_email))
+    and u.role = 'admin'
+    and u.password_hash is not null
+    and u.password_hash = crypt(p_password, u.password_hash)
+  limit 1;
+
+  if matched.id is null then
+    return;
+  end if;
+
+  update auth.users au
+  set
+    encrypted_password = crypt(p_password, gen_salt('bf')),
+    email_confirmed_at = coalesce(au.email_confirmed_at, now())
+  where au.id = matched.id
+     or lower(au.email) = lower(matched.email);
+
+  return query
+  select matched.id, matched.email, matched.full_name, matched.role;
+end;
+$$;
+
+revoke all on function public.wheatleys_admin_login(text, text) from public;
+grant execute on function public.wheatleys_admin_login(text, text) to anon, authenticated;
+
+insert into public.wheatleys_users (id, email, full_name, role, password_hash)
+select id, email, 'John Biddulph', 'admin', crypt('ChooseAStrongPassword123!', gen_salt('bf'))
 from auth.users
 where email = 'john.mbiddulph@gmail.com'
 on conflict (id) do update
-set role = 'admin',
-    email = excluded.email,
-    full_name = excluded.full_name;
-```
-
-3. Set an **app password** (dashboard password will not work). Either:
-   - Use **Continue with Google** on `/admin/login`, or
-   - Click **Forgot password?** on `/admin/login`, or
-   - Run this in the SQL Editor (pick your own password):
-
-```sql
-update auth.users
 set
-  encrypted_password = crypt('ChooseAStrongPassword123!', gen_salt('bf')),
-  email_confirmed_at = coalesce(email_confirmed_at, now())
-where email = 'john.mbiddulph@gmail.com';
+  role = 'admin',
+  email = excluded.email,
+  full_name = excluded.full_name,
+  password_hash = excluded.password_hash;
 ```
 
-4. In Supabase Auth URL config, allow redirects:
-   - `https://wheatleys.vercel.app/**`
-   - `http://localhost:3000/**` (local)
+Then sign in at `/admin/login` with that email and password.
 
-Optional policy helpers live in `supabase/migrations/20260930120000_wheatleys_admin.sql`.
+Optional helpers also live under `supabase/migrations/`.
 
 ## Supabase assets
 
