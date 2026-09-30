@@ -75,7 +75,7 @@ watch(
   top: 0;
   z-index: 40;
   backdrop-filter: blur(14px);
-  background: rgba(12, 14, 17, 0.78);
+  background: rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid var(--line);
 }
 
@@ -95,7 +95,6 @@ watch(
 .brand-logo {
   width: clamp(140px, 22vw, 180px);
   height: auto;
-  filter: brightness(1.05);
 }
 
 .desktop-nav {
@@ -106,13 +105,13 @@ watch(
 .nav-link {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--fog);
+  color: var(--muted);
   position: relative;
 }
 
 .nav-link:hover,
 .nav-link.router-link-active {
-  color: var(--mist);
+  color: var(--navy);
 }
 
 .nav-link.router-link-active::after {
@@ -122,7 +121,7 @@ watch(
   right: 0;
   bottom: -0.45rem;
   height: 2px;
-  background: var(--amber);
+  background: var(--green);
   transform-origin: left;
   animation: sweep 0.45s var(--ease);
 }
@@ -131,10 +130,11 @@ watch(
   display: none;
   padding: 0.55rem 0.95rem;
   border-radius: 999px;
-  border: 1px solid rgba(232, 163, 23, 0.45);
-  color: var(--amber-bright);
+  border: 1px solid rgba(0, 104, 160, 0.35);
+  color: var(--blue);
   font-weight: 600;
   font-size: 0.92rem;
+  background: rgba(86, 159, 247, 0.08);
 }
 
 .menu-btn {
@@ -142,7 +142,7 @@ watch(
   height: 2.6rem;
   border: 1px solid var(--line);
   border-radius: 0.7rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white);
   display: grid;
   place-content: center;
   gap: 0.35rem;
@@ -153,7 +153,7 @@ watch(
   display: block;
   width: 1.1rem;
   height: 2px;
-  background: var(--mist);
+  background: var(--navy);
 }
 
 .mobile-nav {
@@ -166,6 +166,7 @@ watch(
   padding: 0.7rem 0;
   border-bottom: 1px solid var(--line);
   font-weight: 500;
+  color: var(--navy);
 }
 
 @media (min-width: 900px) {

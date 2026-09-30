@@ -71,18 +71,18 @@ const whyUs = [
 
 .lead {
   font-size: 1.2rem;
-  color: var(--mist);
+  color: var(--navy);
   margin-bottom: 1rem;
 }
 
 .body-copy {
-  color: var(--fog);
+  color: var(--muted);
   margin-bottom: 0.9rem;
   max-width: 60ch;
 }
 
 .emphasis {
-  color: var(--amber-bright);
+  color: var(--blue);
   font-weight: 600;
 }
 
@@ -90,7 +90,8 @@ const whyUs = [
   padding: 1.5rem;
   border-radius: 1.4rem;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(12, 38, 93, 0.05);
   height: fit-content;
 }
 
@@ -101,7 +102,7 @@ const whyUs = [
 }
 
 .aside p {
-  color: var(--fog);
+  color: var(--muted);
   margin-bottom: 1rem;
 }
 
@@ -115,7 +116,8 @@ const whyUs = [
 
 .aside li {
   padding-left: 1rem;
-  border-left: 3px solid var(--amber);
+  border-left: 3px solid var(--green);
+  color: var(--navy);
 }
 
 @media (min-width: 900px) {

@@ -39,7 +39,9 @@ const { storageUrl } = useStorageUrl()
 .page-hero-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 12, 14, 0.28), rgba(10, 12, 14, 0.92));
+  background:
+    linear-gradient(180deg, rgba(12, 38, 93, 0.25), rgba(12, 38, 93, 0.82)),
+    linear-gradient(90deg, rgba(20, 27, 56, 0.55), transparent 60%);
 }
 
 .page-hero-content {
@@ -50,7 +52,7 @@ const { storageUrl } = useStorageUrl()
 
 .brand-line {
   font-family: var(--font-display);
-  color: var(--amber-bright);
+  color: var(--green-bright);
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -60,5 +62,6 @@ const { storageUrl } = useStorageUrl()
 h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   margin-top: 0.35rem;
+  color: var(--white);
 }
 </style>

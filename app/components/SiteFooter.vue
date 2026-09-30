@@ -59,7 +59,8 @@ const { storageUrl } = useStorageUrl()
 .footer {
   margin-top: 4rem;
   border-top: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.28);
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--white);
   padding: 3rem 0 1.5rem;
 }
 
@@ -71,12 +72,15 @@ const { storageUrl } = useStorageUrl()
 .footer-logo {
   width: 160px;
   margin-bottom: 1rem;
+  background: var(--white);
+  border-radius: 0.6rem;
+  padding: 0.45rem 0.65rem;
 }
 
 .footer-copy,
 address,
 .hours {
-  color: var(--fog);
+  color: rgba(255, 255, 255, 0.78);
   font-style: normal;
   font-size: 0.95rem;
 }
@@ -86,7 +90,7 @@ address,
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--green-bright);
   margin-bottom: 0.9rem;
 }
 
@@ -95,28 +99,33 @@ address,
   gap: 0.55rem;
 }
 
+.footer-links a,
+.legal-links a,
+.footer-phone {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .footer-links a:hover,
 .legal-links a:hover,
 .footer-phone:hover {
-  color: var(--amber-bright);
+  color: var(--green-bright);
 }
 
 .footer-phone {
   display: inline-block;
   margin-top: 0.75rem;
   font-weight: 600;
-  color: var(--mist);
 }
 
 .legal-row {
   margin-top: 2.5rem;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1.25rem;
   justify-content: space-between;
-  color: var(--fog);
+  color: rgba(255, 255, 255, 0.65);
   font-size: 0.85rem;
 }
 

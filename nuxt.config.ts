@@ -13,7 +13,7 @@ export default defineNuxtConfig({
           content:
             "Exceptional vehicle repair and car bodywork restoration in Lancing, West Sussex. Over 70 years of expertise in auto refinishing.",
         },
-        { name: 'theme-color', content: '#121416' },
+        { name: 'theme-color', content: '#0c265d' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },

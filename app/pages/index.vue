@@ -234,8 +234,8 @@ const insurers = [
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(10, 12, 14, 0.35) 0%, rgba(10, 12, 14, 0.72) 48%, rgba(10, 12, 14, 0.94) 100%),
-    linear-gradient(90deg, rgba(10, 12, 14, 0.7), transparent 55%);
+    linear-gradient(180deg, rgba(12, 38, 93, 0.35) 0%, rgba(12, 38, 93, 0.72) 55%, rgba(20, 27, 56, 0.92) 100%),
+    linear-gradient(90deg, rgba(20, 27, 56, 0.62), transparent 58%);
 }
 
 .hero-content {
@@ -250,28 +250,43 @@ const insurers = [
   font-size: clamp(3.2rem, 11vw, 7.5rem);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--amber-bright);
+  color: var(--green-bright);
   line-height: 0.9;
-  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 10px 30px rgba(12, 38, 93, 0.35);
 }
 
 .hero-title {
   font-size: clamp(2rem, 6vw, 3.4rem);
   margin: 0.35rem 0 1.25rem;
   max-width: 14ch;
+  color: var(--white);
+  text-shadow: 0 8px 24px rgba(12, 38, 93, 0.35);
 }
 
 .hero-copy {
-  color: var(--fog);
+  color: rgba(255, 255, 255, 0.92);
   font-size: clamp(0.98rem, 2.4vw, 1.08rem);
   max-width: 54ch;
   margin-bottom: 1.35rem;
+  text-shadow: 0 4px 16px rgba(12, 38, 93, 0.35);
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+}
+
+.hero-actions :deep(.btn-ghost) {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(12, 38, 93, 0.25);
+  color: var(--white);
+}
+
+.hero-actions :deep(.btn-ghost):hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
 }
 
 .intro {
@@ -292,25 +307,27 @@ const insurers = [
   align-items: center;
   gap: 0.8rem;
   padding: 0.95rem 1.1rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white);
   border: 1px solid var(--line);
   border-radius: 1rem;
+  color: var(--navy);
   opacity: 0;
   animation: rise 0.7s var(--ease) forwards;
+  box-shadow: 0 8px 24px rgba(12, 38, 93, 0.04);
 }
 
 .tick {
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 50%;
-  background: var(--amber);
-  box-shadow: 0 0 0 6px rgba(232, 163, 23, 0.15);
+  background: var(--green);
+  box-shadow: 0 0 0 6px rgba(101, 188, 123, 0.18);
   flex: 0 0 auto;
 }
 
 .services-band,
 .gallery-band {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(232, 238, 246, 0.55);
   border-block: 1px solid var(--line);
 }
 
@@ -328,7 +345,8 @@ const insurers = [
   padding: 1rem;
   border-radius: 1.25rem;
   border: 1px solid var(--line);
-  background: rgba(18, 20, 22, 0.55);
+  background: var(--white);
+  box-shadow: 0 10px 28px rgba(12, 38, 93, 0.05);
   transition:
     transform 0.35s var(--ease),
     border-color 0.35s var(--ease);
@@ -336,7 +354,7 @@ const insurers = [
 
 .service-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(232, 163, 23, 0.45);
+  border-color: rgba(101, 188, 123, 0.55);
 }
 
 .service-image {
@@ -351,10 +369,11 @@ const insurers = [
   font-size: 1.2rem;
   font-weight: 650;
   margin-bottom: 0.3rem;
+  color: var(--navy);
 }
 
 .service-card p {
-  color: var(--fog);
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
@@ -370,7 +389,6 @@ const insurers = [
 .google-badge {
   width: min(220px, 45vw);
   height: auto;
-  mix-blend-mode: lighten;
 }
 
 .review-rail {
@@ -388,19 +406,20 @@ const insurers = [
   padding: 1.35rem;
   border-radius: 1.25rem;
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(35, 42, 51, 0.9), rgba(18, 20, 22, 0.9));
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(12, 38, 93, 0.06);
   min-height: 100%;
   display: grid;
   gap: 0.9rem;
 }
 
 .stars {
-  color: var(--amber-bright);
+  color: var(--green);
   letter-spacing: 0.12em;
 }
 
 .review-card p {
-  color: var(--mist);
+  color: var(--text);
   font-size: 0.98rem;
 }
 
@@ -408,7 +427,7 @@ const insurers = [
   display: flex;
   justify-content: space-between;
   gap: 0.75rem;
-  color: var(--fog);
+  color: var(--muted);
   font-size: 0.88rem;
 }
 
@@ -464,10 +483,12 @@ const insurers = [
 .cta-inner {
   padding: clamp(1.75rem, 4vw, 2.75rem);
   border-radius: 1.75rem;
-  border: 1px solid rgba(232, 163, 23, 0.35);
+  border: 1px solid rgba(0, 104, 160, 0.2);
   background:
-    radial-gradient(500px 220px at 0% 0%, rgba(232, 163, 23, 0.18), transparent 60%),
-    rgba(255, 255, 255, 0.03);
+    radial-gradient(500px 220px at 0% 0%, rgba(101, 188, 123, 0.2), transparent 60%),
+    radial-gradient(420px 200px at 100% 0%, rgba(86, 159, 247, 0.16), transparent 55%),
+    var(--white);
+  box-shadow: 0 16px 40px rgba(12, 38, 93, 0.06);
 }
 
 .cta-inner .section-title {

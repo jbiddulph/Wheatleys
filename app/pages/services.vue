@@ -87,7 +87,7 @@ function paragraphs(body?: string | null) {
 <style scoped>
 .lead {
   font-size: 1.15rem;
-  color: var(--fog);
+  color: var(--muted);
   max-width: 65ch;
   margin-bottom: 2.5rem;
 }
@@ -103,7 +103,8 @@ function paragraphs(body?: string | null) {
   padding: 1.25rem;
   border-radius: 1.4rem;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(12, 38, 93, 0.05);
 }
 
 .service-visual {
@@ -119,10 +120,11 @@ function paragraphs(body?: string | null) {
   font-size: 1.6rem;
   font-weight: 650;
   margin-bottom: 0.75rem;
+  color: var(--navy);
 }
 
 .service-block p {
-  color: var(--fog);
+  color: var(--muted);
   margin-bottom: 0.85rem;
   max-width: 65ch;
 }

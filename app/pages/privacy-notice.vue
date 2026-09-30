@@ -145,12 +145,12 @@ h3 {
 }
 
 p {
-  color: var(--fog);
+  color: var(--muted);
   margin-bottom: 0.8rem;
 }
 
 a {
-  color: var(--amber-bright);
+  color: var(--blue);
   text-decoration: underline;
 }
 </style>

@@ -75,6 +75,6 @@ useSeoMeta({ title: "Terms of use | Wheatley's Accident Repair Centre" })
 <style scoped>
 .legal { max-width: 760px; }
 h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); margin-bottom: 1.25rem; }
-p, li { color: var(--fog); margin-bottom: 0.8rem; }
+p, li { color: var(--muted); margin-bottom: 0.8rem; }
 ul { padding-left: 1.2rem; display: grid; gap: 0.65rem; }
 </style>

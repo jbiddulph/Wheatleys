@@ -153,7 +153,7 @@ h2 {
 }
 
 .note {
-  color: var(--amber);
+  color: var(--blue);
   margin-bottom: 1.25rem;
 }
 
@@ -166,7 +166,7 @@ label {
   display: grid;
   gap: 0.4rem;
   font-size: 0.92rem;
-  color: var(--fog);
+  color: var(--muted);
 }
 
 input,
@@ -174,8 +174,8 @@ textarea {
   width: 100%;
   border-radius: 0.8rem;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--mist);
+  background: var(--white);
+  color: var(--text);
   padding: 0.85rem 0.95rem;
 }
 
@@ -186,7 +186,7 @@ textarea {
 }
 
 .check a {
-  color: var(--amber-bright);
+  color: var(--blue);
   text-decoration: underline;
 }
 
@@ -197,7 +197,8 @@ textarea {
   padding: 1.25rem;
   border-radius: 1.4rem;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(12, 38, 93, 0.05);
 }
 
 .map-link {
@@ -215,7 +216,7 @@ textarea {
 .map-link span,
 address,
 .aside p {
-  color: var(--fog);
+  color: var(--muted);
   font-style: normal;
 }
 
@@ -229,7 +230,7 @@ address,
   display: inline-block;
   margin-top: 0.75rem;
   font-weight: 650;
-  color: var(--amber-bright);
+  color: var(--blue);
 }
 
 @media (min-width: 900px) {

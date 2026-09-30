@@ -71,6 +71,6 @@ useSeoMeta({ title: "Cookie policy | Wheatley's Accident Repair Centre" })
 .legal { max-width: 760px; }
 h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); margin-bottom: 1.25rem; }
 h2 { font-family: var(--font-body); font-size: 1.25rem; margin: 2rem 0 0.7rem; }
-p, li { color: var(--fog); margin-bottom: 0.8rem; }
+p, li { color: var(--muted); margin-bottom: 0.8rem; }
 ul { padding-left: 1.2rem; }
 </style>

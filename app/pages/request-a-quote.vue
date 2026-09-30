@@ -208,12 +208,12 @@ async function submit() {
 <style scoped>
 .lead {
   font-size: 1.1rem;
-  color: var(--mist);
+  color: var(--navy);
   max-width: 60ch;
 }
 
 .lead.muted {
-  color: var(--fog);
+  color: var(--muted);
   margin: 0.5rem 0 2rem;
 }
 
@@ -232,7 +232,7 @@ label,
 fieldset {
   display: grid;
   gap: 0.45rem;
-  color: var(--fog);
+  color: var(--muted);
   font-size: 0.92rem;
 }
 
@@ -240,11 +240,12 @@ fieldset {
   border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 1rem;
+  background: var(--white);
 }
 
 legend {
   padding: 0 0.35rem;
-  color: var(--mist);
+  color: var(--navy);
 }
 
 input,
@@ -252,8 +253,8 @@ textarea {
   width: 100%;
   border-radius: 0.8rem;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--mist);
+  background: var(--white);
+  color: var(--text);
   padding: 0.85rem 0.95rem;
 }
 
@@ -269,13 +270,13 @@ textarea {
 }
 
 .consent a {
-  color: var(--amber-bright);
+  color: var(--blue);
   text-decoration: underline;
 }
 
 .hint {
   font-size: 0.82rem;
-  color: var(--fog);
+  color: var(--muted);
 }
 
 .file-list {
@@ -284,15 +285,15 @@ textarea {
   padding: 0.75rem 1rem;
   border-radius: 0.9rem;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--snow);
   display: grid;
   gap: 0.4rem;
-  color: var(--mist);
+  color: var(--navy);
   font-size: 0.9rem;
 }
 
 .file-list span {
-  color: var(--fog);
+  color: var(--muted);
   margin-left: 0.35rem;
 }
 
