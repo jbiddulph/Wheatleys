@@ -43,6 +43,30 @@ export function useAuth() {
     return data
   }
 
+  async function signInWithGoogle(redirectTo: string) {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo },
+    })
+    if (error) throw error
+    return data
+  }
+
+  async function requestPasswordReset(email: string, redirectTo: string) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo,
+    })
+    if (error) throw error
+  }
+
+  async function updatePassword(password: string) {
+    const { data, error } = await supabase.auth.updateUser({ password })
+    if (error) throw error
+    session.value = (await supabase.auth.getSession()).data.session
+    user.value = data.user
+    return data
+  }
+
   async function signOut() {
     const { error } = await supabase.auth.signOut()
     if (error) throw error
@@ -63,6 +87,9 @@ export function useAuth() {
     isAuthenticated: computed(() => !!session.value),
     refresh,
     signIn,
+    signInWithGoogle,
+    requestPasswordReset,
+    updatePassword,
     signOut,
   }
 }

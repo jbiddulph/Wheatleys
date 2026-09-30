@@ -31,17 +31,40 @@ Production (Vercel): https://wheatleys.vercel.app
 
 Staff login: https://wheatleys.vercel.app/admin/login
 
-Admin access uses Supabase Auth plus `wheatleys_users.role = 'admin'` (checked via `is_wheatleys_admin()`).
+**Important:** logging into the Supabase Dashboard is separate from logging into the Wheatleys app. The app uses **Authentication → Users** in the UKpubs project (`isprmebbahzjnrekkvxv`), not your dashboard password.
 
-1. Create the user under Authentication in the UKpubs Supabase project
-2. Promote them in SQL:
+### One-time setup
+
+1. Confirm your Auth user exists (Authentication → Users). Email `john.mbiddulph@gmail.com` already does.
+2. Promote that user to admin in the SQL Editor:
 
 ```sql
 insert into public.wheatleys_users (id, email, full_name, role)
-values ('AUTH_USER_UUID', 'you@example.com', 'Your Name', 'admin')
+select id, email, 'John Biddulph', 'admin'
+from auth.users
+where email = 'john.mbiddulph@gmail.com'
 on conflict (id) do update
-set role = 'admin', email = excluded.email, full_name = excluded.full_name;
+set role = 'admin',
+    email = excluded.email,
+    full_name = excluded.full_name;
 ```
+
+3. Set an **app password** (dashboard password will not work). Either:
+   - Use **Continue with Google** on `/admin/login`, or
+   - Click **Forgot password?** on `/admin/login`, or
+   - Run this in the SQL Editor (pick your own password):
+
+```sql
+update auth.users
+set
+  encrypted_password = crypt('ChooseAStrongPassword123!', gen_salt('bf')),
+  email_confirmed_at = coalesce(email_confirmed_at, now())
+where email = 'john.mbiddulph@gmail.com';
+```
+
+4. In Supabase Auth URL config, allow redirects:
+   - `https://wheatleys.vercel.app/**`
+   - `http://localhost:3000/**` (local)
 
 Optional policy helpers live in `supabase/migrations/20260930120000_wheatleys_admin.sql`.
 
