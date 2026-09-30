@@ -263,9 +263,9 @@ const insurers = [
 
 .hero-copy {
   color: var(--fog);
-  font-size: 1.08rem;
+  font-size: clamp(0.98rem, 2.4vw, 1.08rem);
   max-width: 54ch;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.35rem;
 }
 
 .hero-actions {
@@ -479,6 +479,10 @@ const insurers = [
 }
 
 @media (min-width: 800px) {
+  .hero-content {
+    padding: 7rem 0 4.5rem;
+  }
+
   .intro {
     grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
@@ -494,6 +498,23 @@ const insurers = [
 
   .logo-row {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-content {
+    padding-bottom: 6.5rem;
+  }
+
+  .hero-copy {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 </style>
