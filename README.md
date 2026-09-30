@@ -33,14 +33,18 @@ Staff login: https://wheatleys.vercel.app/admin/login
 
 Admin access uses Supabase Auth plus `wheatleys_users.role = 'admin'` (checked via `is_wheatleys_admin()`).
 
-1. Create the user under Authentication in the UKpubs Supabase project
-2. Promote them in SQL:
+1. Create the user under Authentication in the UKpubs Supabase project (skip if they already exist)
+2. Promote them in the SQL Editor (looks up the Auth UUID by email — no placeholder):
 
 ```sql
 insert into public.wheatleys_users (id, email, full_name, role)
-values ('AUTH_USER_UUID', 'you@example.com', 'Your Name', 'admin')
+select id, email, 'John Biddulph', 'admin'
+from auth.users
+where email = 'john.mbiddulph@gmail.com'
 on conflict (id) do update
-set role = 'admin', email = excluded.email, full_name = excluded.full_name;
+set role = 'admin',
+    email = excluded.email,
+    full_name = excluded.full_name;
 ```
 
 Optional policy helpers live in `supabase/migrations/20260930120000_wheatleys_admin.sql`.

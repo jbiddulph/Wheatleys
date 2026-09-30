@@ -112,7 +112,10 @@ create policy wheatleys_inquiries_admin_delete
   to authenticated
   using (public.is_wheatleys_admin());
 
--- Promote the first admin after creating the Auth user in the Supabase dashboard:
+-- Promote an admin after the Auth user exists (replace the email/name as needed):
 -- insert into public.wheatleys_users (id, email, full_name, role)
--- values ('AUTH_USER_UUID', 'you@example.com', 'Your Name', 'admin')
--- on conflict (id) do update set role = 'admin', email = excluded.email;
+-- select id, email, 'Your Name', 'admin'
+-- from auth.users
+-- where email = 'you@example.com'
+-- on conflict (id) do update
+-- set role = 'admin', email = excluded.email, full_name = excluded.full_name;
