@@ -23,6 +23,10 @@ npm run dev
 - `npm run build` — production build
 - `npm run preview` — preview production build
 
+## Deploy
+
+Production (Vercel): https://wheatleys.vercel.app
+
 ## Supabase assets
 
 Public media URL pattern:

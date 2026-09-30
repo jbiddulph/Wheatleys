@@ -241,13 +241,13 @@ const insurers = [
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 7rem 0 4.5rem;
+  padding: 5.5rem 0 5.5rem;
   max-width: 760px;
 }
 
 .brand-mark {
   font-family: var(--font-display);
-  font-size: clamp(3.8rem, 12vw, 7.5rem);
+  font-size: clamp(3.2rem, 11vw, 7.5rem);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--amber-bright);
