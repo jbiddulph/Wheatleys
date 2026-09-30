@@ -27,6 +27,24 @@ npm run dev
 
 Production (Vercel): https://wheatleys.vercel.app
 
+## Admin
+
+Staff login: https://wheatleys.vercel.app/admin/login
+
+Admin access uses Supabase Auth plus `wheatleys_users.role = 'admin'` (checked via `is_wheatleys_admin()`).
+
+1. Create the user under Authentication in the UKpubs Supabase project
+2. Promote them in SQL:
+
+```sql
+insert into public.wheatleys_users (id, email, full_name, role)
+values ('AUTH_USER_UUID', 'you@example.com', 'Your Name', 'admin')
+on conflict (id) do update
+set role = 'admin', email = excluded.email, full_name = excluded.full_name;
+```
+
+Optional policy helpers live in `supabase/migrations/20260930120000_wheatleys_admin.sql`.
+
 ## Supabase assets
 
 Public media URL pattern:
