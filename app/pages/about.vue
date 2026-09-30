@@ -91,7 +91,7 @@ const whyUs = [
   border-radius: 1.4rem;
   border: 1px solid var(--line);
   background: var(--white);
-  box-shadow: 0 12px 30px rgba(12, 38, 93, 0.05);
+  box-shadow: 0 12px 30px rgba(31, 42, 36, 0.05);
   height: fit-content;
 }
 

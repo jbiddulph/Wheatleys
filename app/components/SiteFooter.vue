@@ -12,8 +12,8 @@ const { storageUrl } = useStorageUrl()
           :src="storageUrl('wheatleys_logo_CMYK.png')"
           alt="Wheatley's"
           class="footer-logo"
-          width="160"
-          height="44"
+          width="200"
+          height="55"
         />
         <p class="footer-copy">
           Lancing, West Sussex. Over 70 years of expertise in auto refinishing —
@@ -70,11 +70,18 @@ const { storageUrl } = useStorageUrl()
 }
 
 .footer-logo {
-  width: 160px;
+  display: block;
+  width: min(220px, 75%);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1180 / 326;
+  object-fit: contain;
+  object-position: center;
   margin-bottom: 1rem;
   background: var(--white);
-  border-radius: 0.6rem;
-  padding: 0.45rem 0.65rem;
+  border-radius: 0.85rem;
+  padding: 0.9rem 1.15rem;
+  box-sizing: border-box;
 }
 
 .footer-copy,

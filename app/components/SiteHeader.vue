@@ -130,11 +130,11 @@ watch(
   display: none;
   padding: 0.55rem 0.95rem;
   border-radius: 999px;
-  border: 1px solid rgba(0, 104, 160, 0.35);
-  color: var(--blue);
+  border: 1px solid rgba(196, 120, 59, 0.4);
+  color: var(--copper-deep);
   font-weight: 600;
   font-size: 0.92rem;
-  background: rgba(86, 159, 247, 0.08);
+  background: rgba(196, 120, 59, 0.1);
 }
 
 .menu-btn {

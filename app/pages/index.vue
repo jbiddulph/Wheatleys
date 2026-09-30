@@ -234,8 +234,8 @@ const insurers = [
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(12, 38, 93, 0.35) 0%, rgba(12, 38, 93, 0.72) 55%, rgba(20, 27, 56, 0.92) 100%),
-    linear-gradient(90deg, rgba(20, 27, 56, 0.62), transparent 58%);
+    linear-gradient(180deg, rgba(22, 32, 27, 0.35) 0%, rgba(22, 32, 27, 0.72) 55%, rgba(22, 32, 27, 0.92) 100%),
+    linear-gradient(90deg, rgba(31, 42, 36, 0.62), transparent 58%);
 }
 
 .hero-content {
@@ -252,7 +252,7 @@ const insurers = [
   text-transform: uppercase;
   color: var(--green-bright);
   line-height: 0.9;
-  text-shadow: 0 10px 30px rgba(12, 38, 93, 0.35);
+  text-shadow: 0 10px 30px rgba(22, 32, 27, 0.4);
 }
 
 .hero-title {
@@ -260,7 +260,7 @@ const insurers = [
   margin: 0.35rem 0 1.25rem;
   max-width: 14ch;
   color: var(--white);
-  text-shadow: 0 8px 24px rgba(12, 38, 93, 0.35);
+  text-shadow: 0 8px 24px rgba(22, 32, 27, 0.4);
 }
 
 .hero-copy {
@@ -268,7 +268,7 @@ const insurers = [
   font-size: clamp(0.98rem, 2.4vw, 1.08rem);
   max-width: 54ch;
   margin-bottom: 1.35rem;
-  text-shadow: 0 4px 16px rgba(12, 38, 93, 0.35);
+  text-shadow: 0 4px 16px rgba(22, 32, 27, 0.4);
 }
 
 .hero-actions {
@@ -279,7 +279,7 @@ const insurers = [
 
 .hero-actions :deep(.btn-ghost) {
   border-color: rgba(255, 255, 255, 0.7);
-  background: rgba(12, 38, 93, 0.25);
+  background: rgba(22, 32, 27, 0.28);
   color: var(--white);
 }
 
@@ -313,7 +313,7 @@ const insurers = [
   color: var(--navy);
   opacity: 0;
   animation: rise 0.7s var(--ease) forwards;
-  box-shadow: 0 8px 24px rgba(12, 38, 93, 0.04);
+  box-shadow: 0 8px 24px rgba(31, 42, 36, 0.05);
 }
 
 .tick {
@@ -327,7 +327,7 @@ const insurers = [
 
 .services-band,
 .gallery-band {
-  background: rgba(232, 238, 246, 0.55);
+  background: rgba(232, 240, 234, 0.65);
   border-block: 1px solid var(--line);
 }
 
@@ -346,7 +346,7 @@ const insurers = [
   border-radius: 1.25rem;
   border: 1px solid var(--line);
   background: var(--white);
-  box-shadow: 0 10px 28px rgba(12, 38, 93, 0.05);
+  box-shadow: 0 10px 28px rgba(31, 42, 36, 0.05);
   transition:
     transform 0.35s var(--ease),
     border-color 0.35s var(--ease);
@@ -407,7 +407,7 @@ const insurers = [
   border-radius: 1.25rem;
   border: 1px solid var(--line);
   background: var(--white);
-  box-shadow: 0 12px 30px rgba(12, 38, 93, 0.06);
+  box-shadow: 0 12px 30px rgba(31, 42, 36, 0.06);
   min-height: 100%;
   display: grid;
   gap: 0.9rem;
@@ -483,12 +483,12 @@ const insurers = [
 .cta-inner {
   padding: clamp(1.75rem, 4vw, 2.75rem);
   border-radius: 1.75rem;
-  border: 1px solid rgba(0, 104, 160, 0.2);
+  border: 1px solid rgba(196, 120, 59, 0.22);
   background:
     radial-gradient(500px 220px at 0% 0%, rgba(101, 188, 123, 0.2), transparent 60%),
-    radial-gradient(420px 200px at 100% 0%, rgba(86, 159, 247, 0.16), transparent 55%),
+    radial-gradient(420px 200px at 100% 0%, rgba(196, 120, 59, 0.14), transparent 55%),
     var(--white);
-  box-shadow: 0 16px 40px rgba(12, 38, 93, 0.06);
+  box-shadow: 0 16px 40px rgba(31, 42, 36, 0.06);
 }
 
 .cta-inner .section-title {

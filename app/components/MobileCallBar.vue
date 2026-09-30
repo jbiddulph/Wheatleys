@@ -25,10 +25,10 @@ import { business } from '~/utils/site'
   gap: 0.5rem;
   padding: 0.45rem;
   border-radius: 999px;
-  border: 1px solid rgba(12, 38, 93, 0.12);
+  border: 1px solid rgba(31, 42, 36, 0.12);
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
-  box-shadow: 0 14px 40px rgba(12, 38, 93, 0.16);
+  box-shadow: 0 14px 40px rgba(31, 42, 36, 0.14);
 }
 
 .call,
@@ -47,8 +47,8 @@ import { business } from '~/utils/site'
 }
 
 .quote {
-  border: 1px solid rgba(12, 38, 93, 0.18);
-  color: var(--navy);
+  border: 1px solid rgba(31, 42, 36, 0.18);
+  color: var(--charcoal);
   background: var(--snow);
 }
 

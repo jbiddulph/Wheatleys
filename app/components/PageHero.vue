@@ -40,8 +40,8 @@ const { storageUrl } = useStorageUrl()
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(12, 38, 93, 0.25), rgba(12, 38, 93, 0.82)),
-    linear-gradient(90deg, rgba(20, 27, 56, 0.55), transparent 60%);
+    linear-gradient(180deg, rgba(22, 32, 27, 0.3), rgba(22, 32, 27, 0.84)),
+    linear-gradient(90deg, rgba(31, 42, 36, 0.55), transparent 60%);
 }
 
 .page-hero-content {
